@@ -1,0 +1,28 @@
+name: CI/CD Node.js - Sistemas Distribuidos Gabriel
+
+on: [push]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Build
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Instalando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # Validation
+      - name: Validando código
+        run: node index.js
+
+      # Deploy simulation
+      - name: Simulação de Deploy em Cluster
+        run: |
+          echo "Empacotando aplicação para distribuição..."
+          echo "Status: Enviando código para os servidores..."
+          echo "Deploy finalizado com sucesso."
